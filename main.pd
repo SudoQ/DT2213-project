@@ -1,4 +1,4 @@
-#N canvas 690 2 658 664 10;
+#N canvas 653 4 658 664 10;
 #X obj 40 461 osc~;
 #X obj 40 434 mtof;
 #X obj 39 494 dac~;
@@ -163,7 +163,7 @@
 #X obj 40 182 expr $f1 + ($f2*2);
 #X obj 116 156 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 0 50 792 533 displayTilt 0;
+#N canvas 518 136 792 533 displayTilt 1;
 #X obj 73 95 inlet;
 #X obj 197 99 inlet;
 #X obj 74 125 expr ($f1+1)/2;
@@ -171,30 +171,37 @@
 #X obj 197 124 expr ($f1+1)/2;
 #X obj 126 151 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 72 307 send toGUI;
+#X obj 83 405 send toGUI;
 #X msg 49 246 list /displayLabel0 Tilt x: \$1;
 #X msg 139 279 list /displayLabel1 Tilt y: \$1;
 #X msg 71 212 list /tiltDisplay \$1 \$2;
+#X msg 259 377 list /displayLabel0 Tilt x: \$1 \, list /displayLabel1
+Tilt y: \$2 \, list /tiltDisplay \$3 \$4;
+#X obj 142 338 pack f f f f;
+#X obj 263 441 print;
 #X connect 0 0 2 0;
 #X connect 0 0 7 0;
+#X connect 0 0 11 0;
 #X connect 1 0 4 0;
 #X connect 1 0 8 0;
+#X connect 1 0 11 1;
 #X connect 2 0 3 0;
+#X connect 2 0 11 2;
 #X connect 3 0 9 0;
 #X connect 4 0 3 1;
 #X connect 4 0 5 0;
+#X connect 4 0 11 3;
 #X connect 5 0 3 0;
-#X connect 7 0 6 0;
-#X connect 8 0 6 0;
-#X connect 9 0 6 0;
+#X connect 10 0 6 0;
+#X connect 11 0 10 0;
 #X restore 437 440 pd displayTilt;
 #X obj 280 234 s xTilt;
 #X obj 347 234 s yTilt;
-#X obj 439 411 r xTilt;
-#X obj 528 413 r yTilt;
+#X obj 437 349 r xTilt;
+#X obj 532 346 r yTilt;
 #X obj 40 106 r xTilt;
 #X obj 162 111 r yTilt;
-#N canvas 0 50 450 300 displayMIDI 0;
+#N canvas 741 239 450 300 displayMIDI 0;
 #X obj 91 116 inlet;
 #X obj 91 160 send toGUI;
 #X msg 91 138 list /midiLabel0 MIDI: \$1;
@@ -202,7 +209,7 @@
 #X connect 2 0 1 0;
 #X restore 305 439 pd displayMIDI;
 #X obj 78 412 s midiOut;
-#X obj 305 407 r midiOut;
+#X obj 306 351 r midiOut;
 #N canvas 478 61 450 300 getRootNote 0;
 #X obj 41 56 r fromGUI;
 #X obj 41 78 list trim;
@@ -232,6 +239,54 @@
 -1 -1;
 #X obj 70 367 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
+#N canvas 752 177 450 300 pass 0;
+#X obj 101 139 spigot;
+#X obj 140 114 r pass;
+#X obj 126 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 102 66 inlet;
+#X obj 102 176 outlet;
+#X obj 101 114 f 0;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 305 410 pd pass;
+#N canvas 808 279 450 300 pass 0;
+#X obj 101 139 spigot;
+#X obj 140 114 r pass;
+#X obj 126 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 102 66 inlet;
+#X obj 102 176 outlet;
+#X obj 101 114 f 0;
+#X obj 40 180 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 0 0 4 0;
+#X connect 0 0 6 0;
+#X connect 1 0 0 1;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 437 394 pd pass;
+#N canvas 194 210 450 300 pass 0;
+#X obj 101 139 spigot;
+#X obj 140 114 r pass;
+#X obj 126 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 102 66 inlet;
+#X obj 102 176 outlet;
+#X obj 101 114 f 0;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 531 396 pd pass;
 #X connect 0 0 2 0;
 #X connect 0 0 2 1;
 #X connect 1 0 0 0;
@@ -248,11 +303,11 @@
 #X connect 14 0 4 0;
 #X connect 14 0 8 0;
 #X connect 15 0 14 0;
-#X connect 19 0 16 0;
-#X connect 20 0 16 1;
+#X connect 19 0 38 0;
+#X connect 20 0 39 0;
 #X connect 21 0 12 0;
 #X connect 22 0 13 0;
-#X connect 25 0 23 0;
+#X connect 25 0 37 0;
 #X connect 26 0 27 0;
 #X connect 28 0 29 0;
 #X connect 30 0 1 0;
@@ -265,3 +320,6 @@
 #X connect 34 0 36 0;
 #X connect 35 0 34 0;
 #X connect 36 0 30 0;
+#X connect 37 0 23 0;
+#X connect 38 0 16 0;
+#X connect 39 0 16 1;
