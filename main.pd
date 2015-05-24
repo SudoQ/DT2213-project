@@ -1,6 +1,6 @@
 #N canvas 1120 190 658 664 10;
 #X obj 31 394 mtof;
-#X obj 30 454 dac~;
+#X obj 31 508 dac~;
 #N canvas 0 50 450 300 minorChord 0;
 #X obj 71 94 select 0 1 2 3;
 #X obj 71 30 inlet;
@@ -64,7 +64,7 @@
 #X connect 7 0 3 0;
 #X restore 520 173 pd majorChord;
 #X obj 31 253 +;
-#N canvas 954 277 539 279 displayTilt 1;
+#N canvas 954 277 539 279 displayTilt 0;
 #X obj 21 17 inlet;
 #X obj 144 16 inlet;
 #X obj 21 42 expr ($f1+1)/2;
@@ -284,7 +284,7 @@
 #X connect 10 0 3 0;
 #X restore 520 253 pd round;
 #X obj 436 338 r scaledTilt;
-#N canvas 943 548 450 300 rescale 1;
+#N canvas 943 548 450 300 rescale 0;
 #X obj 105 100 unpack f f;
 #X obj 107 239 outlet;
 #X obj 107 215 pack f f;
@@ -345,7 +345,7 @@
 #X connect 9 0 6 0;
 #X connect 10 0 3 0;
 #X connect 11 0 1 0;
-#X restore 31 424 pd soundGeneration;
+#X restore 31 477 pd soundGeneration;
 #N canvas 145 224 450 300 offset 0;
 #X obj 80 30 inlet;
 #X obj 79 210 +;
@@ -461,7 +461,7 @@
 #X connect 3 0 0 0;
 #X connect 5 0 1 2;
 #X restore 32 174 pd scaleGate;
-#N canvas 684 58 450 463 inputMapping 1;
+#N canvas 684 58 450 463 inputMapping 0;
 #N canvas 746 178 450 300 xScaling 0;
 #X obj 49 27 inlet;
 #X obj 49 93 int;
@@ -473,7 +473,7 @@
 #X connect 3 0 4 0;
 #X connect 4 0 1 0;
 #X restore 49 332 pd xScaling;
-#N canvas 166 208 450 300 yScaling 1;
+#N canvas 166 208 450 300 yScaling 0;
 #X obj 49 27 inlet;
 #X obj 48 103 int;
 #X obj 48 125 outlet;
@@ -796,22 +796,24 @@
 #X restore 32 124 pd inputMapping;
 #X obj 32 149 t f f;
 #N canvas 468 222 450 300 getGUIData 0;
-#X obj 46 173 s rootNote;
-#X obj 166 174 s octave;
-#X obj 286 173 s scaleMode;
-#X obj 46 148 route /rootNoteSlider /octaveSlider /scaleModeToggle
-;
+#X obj 47 190 s rootNote;
+#X obj 135 190 s octave;
+#X obj 227 187 s scaleMode;
 #X obj 46 104 r fromGUI;
 #X obj 46 126 list trim;
-#X connect 3 0 0 0;
-#X connect 3 1 1 0;
-#X connect 3 2 2 0;
+#X obj 46 148 route /rootNoteSlider /octaveSlider /scaleModeToggle
+/muteTap;
+#X obj 326 189 s muteTap;
+#X connect 3 0 4 0;
 #X connect 4 0 5 0;
-#X connect 5 0 3 0;
+#X connect 5 0 0 0;
+#X connect 5 1 1 0;
+#X connect 5 2 2 0;
+#X connect 5 3 6 0;
 #X restore 31 63 pd getGUIData;
 #X text 158 62 Get GUI data;
 #X obj 113 150 r scaleMode;
-#N canvas 642 557 450 300 displayNoteName 1;
+#N canvas 642 557 450 300 displayNoteName 0;
 #X obj 73 39 inlet;
 #X obj 72 239 send toGUI;
 #N canvas 0 50 450 300 speedlim 0;
@@ -965,7 +967,17 @@
 #X connect 27 0 16 0;
 #X connect 28 0 29 0;
 #X restore 514 119 pd noteName;
-#X connect 0 0 21 0;
+#N canvas 920 554 450 300 muteTapMapping 0;
+#X obj 81 48 r muteTap;
+#X obj 81 73 unpack f f f;
+#X obj 162 97 expr ($f1+1)%2;
+#X obj 162 120 outlet;
+#X connect 0 0 1 0;
+#X connect 1 2 2 0;
+#X connect 2 0 3 0;
+#X restore 70 424 pd muteTapMapping;
+#X obj 31 446 spigot;
+#X connect 0 0 33 0;
 #X connect 4 0 20 0;
 #X connect 6 0 22 0;
 #X connect 10 0 8 0;
@@ -987,3 +999,5 @@
 #X connect 25 1 4 0;
 #X connect 28 0 23 1;
 #X connect 30 0 29 0;
+#X connect 32 0 33 1;
+#X connect 33 0 21 0;
