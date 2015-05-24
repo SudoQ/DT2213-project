@@ -1,6 +1,6 @@
 #N canvas 1120 190 658 664 10;
 #X obj 31 394 mtof;
-#X obj 32 508 dac~;
+#X obj 31 508 dac~;
 #N canvas 0 50 450 300 minorChord 0;
 #X obj 71 94 select 0 1 2 3;
 #X obj 71 30 inlet;
@@ -345,7 +345,7 @@
 #X connect 9 0 6 0;
 #X connect 10 0 3 0;
 #X connect 11 0 1 0;
-#X restore 31 424 pd soundGeneration;
+#X restore 31 477 pd soundGeneration;
 #N canvas 145 224 450 300 offset 0;
 #X obj 80 30 inlet;
 #X obj 79 210 +;
@@ -975,17 +975,9 @@
 #X connect 0 0 1 0;
 #X connect 1 2 2 0;
 #X connect 2 0 3 0;
-#X restore 113 450 pd muteTapMapping;
-#N canvas 632 374 450 300 audioGate 0;
-#X obj 149 90 inlet~;
-#X obj 150 140 outlet~;
-#X obj 150 116 *~;
-#X obj 213 90 inlet;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
-#X connect 3 0 2 1;
-#X restore 32 475 pd audioGate;
-#X connect 0 0 21 0;
+#X restore 70 424 pd muteTapMapping;
+#X obj 31 446 spigot;
+#X connect 0 0 33 0;
 #X connect 4 0 20 0;
 #X connect 6 0 22 0;
 #X connect 10 0 8 0;
@@ -997,7 +989,8 @@
 #X connect 19 0 15 0;
 #X connect 20 0 6 0;
 #X connect 20 1 6 1;
-#X connect 21 0 33 0;
+#X connect 21 0 1 0;
+#X connect 21 0 1 1;
 #X connect 22 0 9 0;
 #X connect 22 0 0 0;
 #X connect 23 0 6 0;
@@ -1007,5 +1000,4 @@
 #X connect 28 0 23 1;
 #X connect 30 0 29 0;
 #X connect 32 0 33 1;
-#X connect 33 0 1 0;
-#X connect 33 0 1 1;
+#X connect 33 0 21 0;
