@@ -135,7 +135,7 @@
 #X connect 1 0 2 0;
 #X connect 3 0 2 0;
 #X restore 30 86 pd setGUIdefaults;
-#N canvas 616 130 558 422 network 1;
+#N canvas 616 130 615 422 network 1;
 #X obj 89 47 r fromNetwork;
 #X obj 90 245 s toNetwork;
 #X obj 89 68 route list;
@@ -193,11 +193,11 @@
 #X connect 3 0 1 1;
 #X connect 4 0 1 0;
 #X connect 6 0 0 0;
-#X restore 370 211 pd speedlim;
-#X obj 370 236 s toGUI;
-#X msg 369 188 list /netSLabel Sent: \$1;
+#X restore 402 208 pd speedlim;
+#X obj 402 233 s toGUI;
+#X msg 401 185 list /netSLabel Sent: \$1;
 #X msg 286 88 list /netRLabel Received: \$1;
-#X msg 90 197 list /send/OGD all /valueToNetwork \$1;
+#X msg 90 197 list /send/OGD allButMe /valueToNetwork \$1;
 #X connect 0 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 6 0;
