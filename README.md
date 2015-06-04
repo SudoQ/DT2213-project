@@ -6,7 +6,7 @@ Written by Simon Johansson, Isak Nilsson and Helga Svala Sigurdardottir.
 
 ## Description
 This is a two-part instrument using one or two smartphones. 
-The sound generation and gesture mapping is written in pure data using MobMuPlat. 
+The sound generation and gesture mapping is written in pure data using the API of MobMuPlat. 
 The primary melody instrument generates a synthesized string sound and is controlled by tilting the phone. 
 [Karplus-Strong string synthesis](http://en.wikipedia.org/wiki/Karplus%E2%80%93Strong_string_synthesis) was used to generate the plucked string sound. 
 The secondary rhytmic instrument generates a drum sound and a bass string sound when tilted. 
