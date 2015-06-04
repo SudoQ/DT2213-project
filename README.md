@@ -20,6 +20,9 @@ The timbre of the strings can be altered from the grafical interface. This 2D gr
 * Open the app, go to the network settings and set the input and output port to the same value (e.g. 54321).
 * Open the main.mmp file within the app.
 
+## Melody mapping
+![Tilt mapping](tilt_mapping.jpg)
+
 ## Disclaimer
 The pure data patch is only tested on Android and not OSX.
 The MobMuPlat app sometimes crashes for unknown reasons.
